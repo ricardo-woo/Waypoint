@@ -1,0 +1,9 @@
+{
+  "name": "trip-planner",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "server"
+  ]
+}
