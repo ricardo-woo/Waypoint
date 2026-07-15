@@ -26,7 +26,6 @@ export default function NotesTab({ tripId }: Props) {
       isFirstLoad.current = true;
       setContent(note.content);
     } catch (err) {
-      console.error("Load note error:", err);
     } finally {
       setIsLoading(false);
     }
@@ -51,9 +50,7 @@ export default function NotesTab({ tripId }: Props) {
       try {
         await saveNote(tripId, content);
         setSaveStatus("saved");
-      } catch (err) {
-        console.error("Save note error:", err);
-      }
+      } catch (err) {}
     }, SAVE_DEBOUNCE_MS);
 
     return () => {

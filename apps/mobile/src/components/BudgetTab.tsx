@@ -29,7 +29,6 @@ export default function BudgetTab({ tripId }: Props) {
       const data = await getExpenses(tripId);
       setExpenses(data);
     } catch (err) {
-      console.error("Load expenses error:", err);
     } finally {
       setIsLoading(false);
     }
@@ -59,7 +58,6 @@ export default function BudgetTab({ tripId }: Props) {
       setAmount("");
       setIsAdding(false);
     } catch (err) {
-      console.error("Create expense error:", err);
     } finally {
       setIsSaving(false);
     }
@@ -70,7 +68,6 @@ export default function BudgetTab({ tripId }: Props) {
     try {
       await deleteExpense(id);
     } catch (err) {
-      console.error("Delete expense error:", err);
       load();
     }
   }

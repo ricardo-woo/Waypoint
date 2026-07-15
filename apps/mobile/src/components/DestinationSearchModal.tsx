@@ -152,7 +152,6 @@ export default function DestinationSearchModal({
       setHasSearched(true);
     } catch (err: any) {
       if (err.name !== "AbortError") {
-        console.error("Geoapify autocomplete error:", err);
         setSuggestions([]);
         setHasSearched(true);
       }

@@ -49,7 +49,6 @@ export default function Profile() {
       const data = await getCurrentUser();
       setUser(data);
     } catch (error) {
-      console.error("Profile error:", error);
       setHasError(true);
     } finally {
       setIsLoading(false);

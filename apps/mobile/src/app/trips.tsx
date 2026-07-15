@@ -111,7 +111,6 @@ export default function Trips() {
       setTrips((prev) => prev.filter((t) => t.id !== trip.id));
       setTripPendingDelete(null);
     } catch (err) {
-      console.error("Delete trip error:", err);
       Alert.alert("Couldn't delete trip", "Please try again.");
     } finally {
       setIsDeleting(false);
