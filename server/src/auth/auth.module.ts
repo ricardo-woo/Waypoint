@@ -9,10 +9,22 @@ import { JwtStrategy } from './jwt.strategy';
   imports: [
     PrismaModule,
 
-    JwtModule.register({
-      secret: process.env.JWT_SECRET,
-      signOptions: {
-        expiresIn: '7d',
+    JwtModule.registerAsync({
+      useFactory: () => {
+        const secret = process.env.JWT_SECRET;
+
+        if (!secret) {
+          throw new Error(
+            'JWT_SECRET environment variable is not set. Refusing to start with an insecure default.',
+          );
+        }
+
+        return {
+          secret,
+          signOptions: {
+            expiresIn: '7d',
+          },
+        };
       },
     }),
   ],
