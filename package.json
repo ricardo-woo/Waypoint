@@ -5,5 +5,15 @@
     "apps/*",
     "packages/*",
     "server"
-  ]
+  ],
+  "dependencies": {
+    "@expo-google-fonts/plus-jakarta-sans": "^0.4.2",
+    "@react-native-community/datetimepicker": "9.1.0",
+    "expo-font": "~57.0.0",
+    "expo-secure-store": "~57.0.0",
+    "react-native-paper": "^5.15.3",
+    "react-native-paper-dates": "^0.23.9",
+    "react-native-safe-area-context": "~5.7.0",
+    "zustand": "^5.0.14"
+  }
 }

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "public"."ItineraryItem" ADD COLUMN     "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
