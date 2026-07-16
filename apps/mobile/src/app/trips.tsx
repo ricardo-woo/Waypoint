@@ -118,92 +118,94 @@ export default function Trips() {
   }
 
   return (
-    <SafeAreaView
-      className="flex-1"
-      style={{ backgroundColor: colors.background }}
-      edges={["top"]}
-    >
-      <FlatList
+    <View className="flex-1" style={{ backgroundColor: colors.background }}>
+      <SafeAreaView
         className="flex-1"
-        contentContainerStyle={{ padding: 20, flexGrow: 1 }}
-        data={filteredTrips}
-        keyExtractor={(trip) => trip.id}
-        keyboardShouldPersistTaps="handled"
-        refreshControl={
-          <RefreshControl
-            refreshing={isRefreshing}
-            onRefresh={onRefresh}
-            tintColor={colors.primary}
-          />
-        }
-        ListHeaderComponent={
-          <>
-            <Text
-              className="text-2xl font-bold mb-4"
-              style={{ color: colors.heading }}
-            >
-              My Trips
-            </Text>
-
-            {trips.length > 0 && (
-              <SearchBar
-                value={searchQuery}
-                onChangeText={setSearchQuery}
-                placeholder="Search by trip or destination"
-                className="mb-4"
-              />
-            )}
-
-            {hasError && (
-              <Text className="mb-4" style={{ color: colors.error }}>
-                Couldn't load your trips. Pull down to try again.
-              </Text>
-            )}
-          </>
-        }
-        renderItem={({ item }) => (
-          <TripCard
-            title={item.title}
-            location={item.location}
-            startDate={item.startDate}
-            endDate={item.endDate}
-            imageUrl={item.imageUrl}
-            itineraryCount={item._count?.itinerary}
-            onPress={() =>
-              router.push({
-                pathname: "/trip-details",
-                params: { id: item.id },
-              })
-            }
-            onLongPress={() => setSelectedTrip(item)}
-          />
-        )}
-        ListEmptyComponent={
-          isLoading ? (
-            <View className="items-center mt-10">
-              <ActivityIndicator size="large" color={colors.primary} />
-            </View>
-          ) : hasError ? null : isSearching ? (
-            <View className="items-center mt-10">
+        style={{ backgroundColor: colors.background }}
+        edges={["top"]}
+      >
+        <FlatList
+          className="flex-1"
+          contentContainerStyle={{ padding: 20, flexGrow: 1 }}
+          data={filteredTrips}
+          keyExtractor={(trip) => trip.id}
+          keyboardShouldPersistTaps="handled"
+          refreshControl={
+            <RefreshControl
+              refreshing={isRefreshing}
+              onRefresh={onRefresh}
+              tintColor={colors.primary}
+            />
+          }
+          ListHeaderComponent={
+            <>
               <Text
-                className="text-base text-center"
-                style={{ color: colors.muted }}
+                className="text-2xl font-bold mb-4"
+                style={{ color: colors.heading }}
               >
-                No trips match "{searchQuery.trim()}".
+                My Trips
               </Text>
-            </View>
-          ) : (
-            <View className="items-center mt-10">
-              <Text
-                className="text-base text-center"
-                style={{ color: colors.muted }}
-              >
-                No trips yet — create your first one below.
-              </Text>
-            </View>
-          )
-        }
-      />
+
+              {trips.length > 0 && (
+                <SearchBar
+                  value={searchQuery}
+                  onChangeText={setSearchQuery}
+                  placeholder="Search by trip or destination"
+                  className="mb-4"
+                />
+              )}
+
+              {hasError && (
+                <Text className="mb-4" style={{ color: colors.error }}>
+                  Couldn't load your trips. Pull down to try again.
+                </Text>
+              )}
+            </>
+          }
+          renderItem={({ item }) => (
+            <TripCard
+              title={item.title}
+              location={item.location}
+              startDate={item.startDate}
+              endDate={item.endDate}
+              imageUrl={item.imageUrl}
+              itineraryCount={item._count?.itinerary}
+              onPress={() =>
+                router.push({
+                  pathname: "/trip-details",
+                  params: { id: item.id },
+                })
+              }
+              onLongPress={() => setSelectedTrip(item)}
+            />
+          )}
+          ListEmptyComponent={
+            isLoading ? (
+              <View className="items-center mt-10">
+                <ActivityIndicator size="large" color={colors.primary} />
+              </View>
+            ) : hasError ? null : isSearching ? (
+              <View className="items-center mt-10">
+                <Text
+                  className="text-base text-center"
+                  style={{ color: colors.muted }}
+                >
+                  No trips match "{searchQuery.trim()}".
+                </Text>
+              </View>
+            ) : (
+              <View className="items-center mt-10">
+                <Text
+                  className="text-base text-center"
+                  style={{ color: colors.muted }}
+                >
+                  No trips yet — create your first one below.
+                </Text>
+              </View>
+            )
+          }
+        />
+      </SafeAreaView>
 
       <AddButton onPress={() => router.push("/create-trip")} />
 
@@ -227,6 +229,6 @@ export default function Trips() {
         onCancel={() => setTripPendingDelete(null)}
         onConfirm={handleConfirmDelete}
       />
-    </SafeAreaView>
+    </View>
   );
 }

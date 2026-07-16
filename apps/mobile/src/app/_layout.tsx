@@ -61,11 +61,10 @@ export default function TabsLayout() {
           flex: 1,
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: colors.background, // 👈 Linked loading bg
+          backgroundColor: colors.background,
         }}
       >
-        <ActivityIndicator size="large" color={colors.primary} />{" "}
-        {/* 👈 Linked loader */}
+        <ActivityIndicator size="large" color={colors.primary} />
       </View>
     );
   }

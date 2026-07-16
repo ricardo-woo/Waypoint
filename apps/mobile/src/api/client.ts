@@ -17,13 +17,29 @@ api.interceptors.request.use((config) => {
 
   return config;
 });
+let isLoggingOut = false;
 
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (error.response?.status === 401) {
-      await useAuthStore.getState().logout();
+    const status = error.response?.status;
+    const url: string = error.config?.url ?? "";
+    const isAuthEndpoint =
+      url.includes("/auth/login") || url.includes("/auth/refresh");
+
+    if (status === 401 && !isAuthEndpoint && !isLoggingOut) {
+      const { token, logout } = useAuthStore.getState();
+
+      if (token) {
+        isLoggingOut = true;
+        try {
+          await logout();
+        } finally {
+          isLoggingOut = false;
+        }
+      }
     }
+
     return Promise.reject(error);
   },
 );
