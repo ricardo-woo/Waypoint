@@ -7,11 +7,13 @@ import {
   Post,
   Req,
   UseGuards,
+  Patch,
 } from '@nestjs/common';
 import { Request } from 'express';
 import { JwtGuard } from '../auth/jwt.guard';
 import { TripsService } from './trips.service';
 import { CreateTripDto } from './dto/create-trip.dto';
+import { UpdateTripDto } from './dto/update-trip.dto';
 
 interface AuthenticatedRequest extends Request {
   user: {
@@ -42,5 +44,14 @@ export class TripsController {
   @Delete(':id')
   remove(@Req() req: AuthenticatedRequest, @Param('id') id: string) {
     return this.tripsService.remove(req.user.id, id);
+  }
+
+  @Patch(':id')
+  update(
+    @Req() req: AuthenticatedRequest,
+    @Param('id') id: string,
+    @Body() dto: UpdateTripDto,
+  ) {
+    return this.tripsService.update(req.user.id, id, dto);
   }
 }

@@ -3,5 +3,24 @@
     "@react-native-community/datetimepicker",
     "expo-font",
     "expo-secure-store"
-  ]
+  ],
+  "extra": {
+    "eas": {
+      "projectId": "08702fef-c6c7-4b23-bcc1-a17608004e15"
+    }
+  },
+  "expo": {
+    "ios": {
+      "bundleIdentifier": "com.ricardo.woo.tripplanner",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "08702fef-c6c7-4b23-bcc1-a17608004e15"
+      }
+    },
+    "owner": "ricardo.woo"
+  }
 }

@@ -147,6 +147,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="create-trip" options={{ href: null }} />
       <Tabs.Screen name="trip-details" options={{ href: null }} />
       <Tabs.Screen name="add-itinerary" options={{ href: null }} />
+      <Tabs.Screen name="edit-trip" options={{ href: null }} />
     </Tabs>
   );
 }

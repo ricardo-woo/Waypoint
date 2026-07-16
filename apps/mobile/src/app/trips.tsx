@@ -88,7 +88,7 @@ export default function Trips() {
     if (!trip) return;
 
     router.push({
-      pathname: "/trip-details",
+      pathname: "/edit-trip" as any,
       params: { id: trip.id },
     });
   }

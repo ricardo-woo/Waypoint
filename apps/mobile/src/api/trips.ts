@@ -49,6 +49,21 @@ export async function createTrip(payload: {
   return data;
 }
 
+export async function updateTrip(
+  id: string,
+  payload: {
+    title?: string;
+    location?: string;
+    description?: string;
+    countryCode?: string;
+    startDate?: string;
+    endDate?: string;
+  },
+): Promise<Trip> {
+  const { data } = await api.patch<Trip>(`/trips/${id}`, payload);
+  return data;
+}
+
 export async function getTripItinerary(tripId: string) {
   const response = await api.get(`/itinerary?tripId=${tripId}`);
 

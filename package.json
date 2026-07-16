@@ -16,5 +16,8 @@
     "react-native-paper-dates": "^0.23.9",
     "react-native-safe-area-context": "~5.7.0",
     "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@expo/ngrok": "^4.1.3"
   }
 }
